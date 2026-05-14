@@ -220,5 +220,4 @@ def run_game():
 
 
 # Точка входа для запуска игры
-if __name__ == '__main__':
-    run_game()
+run_game()
