@@ -46,7 +46,7 @@ class Zombie(Monster):
         super().__init__(name, 120, 10)
 
     def take_damage(self, damage):
-        print(f"{self.get_name()} теряет конечность! Получено: {damage}; ", )
+        print(f"{self.get_name()} получает {damage} урона. HP: {self.get_hp()}")
         super().take_damage(damage)
 
 
@@ -60,7 +60,7 @@ class Vampire(Monster):
         if actual_damage < 0:
             actual_damage = 0
 
-        print(f"{self.get_name()} поглощает {absorbed} урона. Получено {actual_damage}. ")
+        print(f"{self.get_name()} поглощает {absorbed} урона. HP: {self.get_hp()}")
         super().take_damage(actual_damage)
 
 
@@ -73,7 +73,7 @@ class Ghost(Monster):
         if random.random() < 0.3:
             print(f"{self.get_name()} уклоняется от удара!")
         else:
-            print(f"{self.get_name()} получает {damage} урона. ")
+            print(f"{self.get_name()} получает {damage} урона. HP: {self.get_hp()}")
             super().take_damage(damage)
 
 
@@ -88,7 +88,7 @@ class Werewolf(Monster):
         # Если здоровья меньше 50 и он еще не превратился — трансформируется
         if not self._transformed and self.get_hp() < 50:
             self._transformed = True
-            print(f"{self.get_name()} превращается в яростного волка!")
+            print(f"{self.get_name()} трансформируется!")
 
 
 
