@@ -56,15 +56,11 @@ class Vampire(Monster):
         super().__init__(name, 80, 15)
 
     def take_damage(self, damage):
-        absorbed = 5
-        actual_damage = damage - absorbed
+        actual_damage = damage - 5
         if actual_damage < 0:
             actual_damage = 0
 
-        print(
-            f"{self.get_name()} поглощает {absorbed} урона. Получено {actual_damage}. ",
-            end="",
-        )
+        print(f"{self.get_name()} поглощает {absorbed} урона. Получено {actual_damage}. ", end="",)
         super().take_damage(actual_damage)
 
 
