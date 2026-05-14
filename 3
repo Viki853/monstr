@@ -1,0 +1,37 @@
+class Weapon:
+    def __init__(self, name):
+        self.name = name
+
+    def use(self, monster):
+        # Базовый метод, который будет переопределен в дочерних классах
+        pass
+
+
+class SilverSword(Weapon):
+    def __init__(self):
+        super().__init__("Серебряный меч")
+
+    def use(self, monster):
+        damage = 30
+        print(f"Атака оружием {self.name} по {monster.get_name()}! ", end="")
+        monster.take_damage(damage)
+
+
+class HolyWater(Weapon):
+    def __init__(self):
+        super().__init__("Святая вода")
+
+    def use(self, monster):
+        damage = 20
+        print(f"Применение оружия {self.name} против {monster.get_name()}! ", end="")
+        monster.take_damage(damage)
+
+
+class CrossbowBolt(Weapon):
+    def __init__(self):
+        super().__init__("Арбалет с болтом")
+
+    def use(self, monster):
+        damage = 25
+        print(f"Выстрел из оружия {self.name} в {monster.get_name()}! ", end="")
+        monster.take_damage(damage)
