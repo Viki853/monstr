@@ -42,7 +42,7 @@ class Zombie(Monster):
         super().__init__(name, 120, 10)
 
     def take_damage(self, damage):
-        print(f'{self.get_name()} теряет конечность! Получено: {damage}. ', end='')
+        print(f'{self.get_name()} получает урон! Получено: {damage}. ', end='')
         super().take_damage(damage)
 
 
@@ -83,50 +83,52 @@ class Werewolf(Monster):
             print(f'{self.get_name()} трансформируется!')
 
 class Weapon:
+
     def __init__(self, name):
         self.name = name
 
     def use(self, monster):
-        # Базовый метод, который будет переопределен в дочерних классах
-        pass
-
+        pass 
 
 class SilverSword(Weapon):
+
     def __init__(self):
         super().__init__("Серебряный меч")
 
     def use(self, monster):
         damage = 30
-        print(f"Атака оружием {self.name} по {monster.get_name()}! ", end="")
+        print(f"Использовано оружие {self.name} по {monster.get_name()}: ")
         monster.take_damage(damage)
 
 
 class HolyWater(Weapon):
+
     def __init__(self):
         super().__init__("Святая вода")
 
     def use(self, monster):
         damage = 20
-        print(f"Применение оружия {self.name} против {monster.get_name()}! ", end="")
+        print(f"Использовано оружие {self.name} против {monster.get_name()}: ")
         monster.take_damage(damage)
 
 
 class CrossbowBolt(Weapon):
+
     def __init__(self):
-        super().__init__("Арбалет с болтом")
+        super().__init__("Болт арбалета")
 
     def use(self, monster):
-        damage = 25
-        print(f"Выстрел из оружия {self.name} в {monster.get_name()}! ", end="")
+        damage = 15
+        print(f"Использовано оружие {self.name} по {monster.get_name()}: ")
         monster.take_damage(damage)
+        
 ######################################################################################################
 
 class Hunter:
     def __init__(self, name):
         self.__name = name
         self.__hp = 100
-        self.__weapons = []  # Приватный инвентарь (список оружия)
-
+        self.__weapons = []  
     def get_name(self):
         return self.__name
 
@@ -155,11 +157,9 @@ class Hunter:
             print(f"{index}. {weapon.name}")
 
     def attack(self, weapon_index, monster):
-        # Проверяем корректность переданного индекса (переводим из 1-нумерации в 0-индекс)
         actual_index = weapon_index - 1
         if 0 <= actual_index < len(self.__weapons):
             chosen_weapon = self.__weapons[actual_index]
-            # Вызываем метод use() у выбранного оружия
             chosen_weapon.use(monster)
         else:
             print("Оружие с таким номером не найдено в инвентаре!")
