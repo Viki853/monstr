@@ -36,9 +36,7 @@ class Monster:
 
     def attack_hunter(self, hunter):
         hunter.set_hp(hunter.get_hp() - self.__dmg)
-        print(
-            f"{self.__name} атакует охотника и наносит {self.__dmg} урона!"
-        )
+        print(f"{self.__name} атакует охотника и наносит {self.__dmg} урона!")
 
 
 class Zombie(Monster):
@@ -64,8 +62,7 @@ class Vampire(Monster):
             actual_damage = 0
 
         
-        print(
-            f"{self.get_name()} поглощает {absorbed} урона! Получено: {actual_damage}.")
+        print(f"{self.get_name()} поглощает {absorbed} урона! Получено: {actual_damage}.")
         super().take_damage(actual_damage)
 
 
